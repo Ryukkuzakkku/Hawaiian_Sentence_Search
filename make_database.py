@@ -20,23 +20,26 @@ def tokenize_sentences(text):
 ##flips through whole book and grabs all text into a list
 def get_all_text(url):
     i = 0
-    no_error = True
+    working = True
     book_list = []
 
-    while no_error is True:
+    while nworking is True:
         
+        ##updates the index by 1, the gets soup
         url = url.replace("D0." + str(i), "D0." + str(i+1))
         soup = get_soup(url)
 
-        
+        ##if on the correct index
         if "D0." + str(i + 1) in url:
             print("Getting: " + url + "\n\n")
             page_text = get_body(soup)
+            print("Length: " + str(len(page_text)))
 
-            ##temporary until i find how to check for blank
-            if i is 24:
-                no_error = False
-            
+             ##checks if the string is empty, this is what it does when there's no text.
+            if len(page_text) is 2:
+                working = False
+                
+            ##add the goods
             book_list.extend(tokenize_sentences(page_text))
             print("apended")
             
@@ -49,7 +52,7 @@ def get_all_text(url):
 
 
 ##test
-url = "http://www.ulukau.org/elib/cgi-bin/library?e=d-0ks4-000Sec--11haw-50-20-frameset-book--1-010escapewin&a=d&d=D0.1&toc=0"
+url = input("URL: ")
 
 text = get_all_text(url)
 print(text)
