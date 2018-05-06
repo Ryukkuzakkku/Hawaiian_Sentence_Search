@@ -24,7 +24,7 @@ def get_all_text(url):
     book_list = []
     
     if len(page_text) is not 2:
-                book_list.extend(tokenize_sentences(page_text))
+        book_list.extend(tokenize_sentences(page_text))
             
     return book_list
 
@@ -32,6 +32,8 @@ def get_all_text(url):
 '''
 TODO
 *Add add_to_database (Takes sentence and adds it to database, organizing it by number, url, book name and sentence itself)
+(Go through list, get all links. On every link, look at the links on page, and find one ending in D0&TOC=0)
+
 *Add get_all_data (traverses all books from the search and adds it in the database)
 '''
 
