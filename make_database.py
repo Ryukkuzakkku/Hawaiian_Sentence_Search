@@ -50,6 +50,11 @@ def get_all_text(url):
     return book_list
 
 
+'''
+TODO
+*Add add_to_database (Takes sentence and adds it to database, organizing it by number, url, book name and sentence itself)
+*Add get_all_data (traverses all books from the search and adds it in the database)
+'''
 
 ##test
 url = input("URL: ")
