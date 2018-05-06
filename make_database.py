@@ -23,7 +23,7 @@ def get_all_text(url):
     working = True
     book_list = []
 
-    while nworking is True:
+    while working is True:
         
         ##updates the index by 1, the gets soup
         url = url.replace("D0." + str(i), "D0." + str(i+1))
