@@ -19,33 +19,12 @@ def tokenize_sentences(text):
 
 ##flips through whole book and grabs all text into a list
 def get_all_text(url):
-    i = 0
-    working = True
+    soup = get_soup(url)
+    page_text = get_body(soup)
     book_list = []
-
-    while working is True:
-        
-        ##updates the index by 1, the gets soup
-        url = url.replace("D0." + str(i), "D0." + str(i+1))
-        soup = get_soup(url)
-
-        ##if on the correct index
-        if "D0." + str(i + 1) in url:
-            print("Getting: " + url + "\n\n")
-            page_text = get_body(soup)
-            print("Length: " + str(len(page_text)))
-
-             ##checks if the string is empty, this is what it does when there's no text.
-            if len(page_text) is 2:
-                working = False
-                
-            ##add the goods
-            book_list.extend(tokenize_sentences(page_text))
-            print("apended")
-            
-        i = i + 1
-        print("D0." + str(i))
-        print(url + "\n\n")
+    
+    if len(page_text) is not 2:
+                book_list.extend(tokenize_sentences(page_text))
             
     return book_list
 
